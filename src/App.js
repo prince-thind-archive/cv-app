@@ -1,7 +1,7 @@
 import React from 'react';
 import Details from './components/Details.js';
 import Education from './components/Education.js';
-import WorkExperience from './components/WorkExperience.js';
+import Work from './components/Work.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,36 +9,39 @@ class App extends React.Component {
     this.state = {
       personalDetails: { name: '', address: '', mobileNumber: '', email: '' },
       education: [],
-      workExperience: [],
+      work: [],
       editMode: true,
     };
   }
 
   setDetails = (name, address, mobileNumber, email) => {
-    
     this.setState({
       personalDetails: { name, address, mobileNumber, email },
     });
   };
 
-  setEducation=(arr)=>{
+  setEducation = (arr) => {
     this.setState({
-      education:arr
-    })
-  }
+      education: arr,
+    });
+  };
 
-  setWorkExperience=(arr)=>{
+  setWork = (arr) => {
     this.setState({
-      workExperience:arr
-    })
-  }
+      work: arr,
+    });
+  };
 
   submitForm = (e) => {
     e.preventDefault();
     this.setState({
       editMode: false,
     });
-    //process data
+    this.print();
+  };
+
+  print = () => {
+    console.log(this.state);
   };
 
   edit = (e) => {
@@ -51,20 +54,18 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1 className="heading">CV Application</h1>
-        </header>
         <form className="form">
           <h2 className="form-heading">Please Enter your Details Below</h2>
           <Details details={this.state.personalDetails} setDetails={this.setDetails} editMode={this.state.editMode} />
-          <Education education={this.state.education} setEducation={this.setEducation} editMode={this.state.editMode}/>
-          <WorkExperience workExperience={this.state.workExperience} setWorkExperience={this.setWorkExperience} editMode={this.state.editMode}/>
-         
+          <Education education={this.state.education} setEducation={this.setEducation} editMode={this.state.editMode} />
+          <Work work={this.state.work} setWork={this.setWork} editMode={this.state.editMode} />
+
           {!this.state.editMode && (
             <button className="edit-button" onClick={this.edit}>
               Edit?
             </button>
           )}
+
           <button type="submit" onClick={this.submitForm}>
             Submit
           </button>

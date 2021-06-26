@@ -27,6 +27,7 @@ class Education extends React.Component {
     const sectionIndex = this.props.education.findIndex((e) => {
       return e.id === id;
     });
+
     let newObj = {};
     if (e.target.getAttribute('id') === 'instituteName') {
       newObj = {
@@ -41,11 +42,13 @@ class Education extends React.Component {
         id: this.props.education[sectionIndex].id,
       };
     }
+
     let res = this.props.education.slice();
     res.splice(sectionIndex, 1, newObj);
 
     this.props.setEducation(res);
   };
+
   getSectionValue = (id, type) => {
     const section = this.props.education.find((e) => {
       return e.id === id;
@@ -58,56 +61,59 @@ class Education extends React.Component {
     }
   };
 
-  getRender = () => {
-    if (this.props.editMode) {
-      return this.props.education.map((section) => {
-        return (
-          <div key={section.id} data-key={section.id}>
-            <label htmlFor="instituteName">
-              Institute Name:{' '}
-              <input
-                type="text"
-                id="instituteName"
-                name="instituteName"
-                onChange={this.updateSection}
-                value={this.getSectionValue(section.id, 'name')}
-              />
-            </label>
-            <label htmlFor="titleOfStudy">
-              Title Of Study:{' '}
-              <input
-                type="text"
-                id="titleOfStudy"
-                name="titleOfStudy"
-                onChange={this.updateSection}
-                value={this.getSectionValue(section.id, 'title')}
-              />
-            </label>
-          </div>
-        );
-      });
-    }
-
+  renderEditable = () => {
     return this.props.education.map((section) => {
       return (
-        <div key={section.id} data-key={section.id}>
+        <div key={section.id} data-key={section.id} className="input-field-education">
           <label htmlFor="instituteName">
-            Institute Name:{this.getSectionValue(section.id, 'name')}
+            Institute Name:{' '}
+            <input
+              type="text"
+              id="instituteName"
+              name="instituteName"
+              onChange={this.updateSection}
+              value={this.getSectionValue(section.id, 'name')}
+            />
           </label>
           <label htmlFor="titleOfStudy">
-            Title Of Study:{this.getSectionValue(section.id, 'title')}
+            Title Of Study:{' '}
+            <input
+              type="text"
+              id="titleOfStudy"
+              name="titleOfStudy"
+              onChange={this.updateSection}
+              value={this.getSectionValue(section.id, 'title')}
+            />
           </label>
         </div>
       );
     });
   };
 
+  renderDisplay = () => {
+    return this.props.education.map((section) => {
+      return (
+        <div key={section.id} data-key={section.id} className="display-field-education">
+          <label htmlFor="instituteName">Institute Name:{this.getSectionValue(section.id, 'name')}</label>
+          <label htmlFor="titleOfStudy">Title Of Study:{this.getSectionValue(section.id, 'title')}</label>
+        </div>
+      );
+    });
+  };
+
+  renderEducation = () => {
+    if (this.props.editMode) {
+      return this.renderEditable();
+    } else {
+      return this.renderDisplay();
+    }
+  };
+
   render() {
-    const render = this.getRender();
     return (
       <div className="Education">
-      <h3>Academic Details</h3>
-        {render}
+        <h3>Academic Details</h3>
+        {this.renderEducation()}
         <button className="add-education" onClick={this.addSection}>
           Add
         </button>

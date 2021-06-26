@@ -1,13 +1,11 @@
 import React from 'react';
+import uniqid from 'uniqid';
 
 class Details extends React.Component {
-  // constructor(props){
-  //   super(props);
-  // }
-
   updateDetails = (e) => {
     const obj = this.props.details;
     const type = e.target.getAttribute('id');
+
     switch (type) {
       case 'name':
         this.props.setDetails(e.target.value, obj.address, obj.mobileNumber, obj.email);
@@ -26,46 +24,50 @@ class Details extends React.Component {
     }
   };
 
-  getDetails=()=>{
-    if(this.props.editMode){
-      return (<div className="Details">
-      <h2>Personal Details</h2>
-      <label htmlFor="name">
-        Name: <input type="text" id="name" name="name" onChange={this.updateDetails} value={this.props.details.name} />
-      </label>
-      <label htmlFor="address">
-        Address: <input type="text" id="address" name="address" onChange={this.updateDetails} value={this.props.details.address} />
-      </label>
-      <label htmlFor="mobileNumber">
-        MobileNumber: <input type="text" id="mobileNumber" name="mobileNumber" onChange={this.updateDetails} value={this.props.details.mobileNumber} />
-      </label>
-      <label htmlFor="email">
-        Email: <input type="text" id="email" name="email" onChange={this.updateDetails} value={this.props.details.email}/>
-      </label>
-    </div>)
-    }
-    return (<div className="Details">
-    <h3>Personal Details</h3>
-    <label htmlFor="name">
-      Name: {this.props.details.name} 
-    </label>
-    <label htmlFor="address">
-      Address: {this.props.details.address} 
-    </label>
-    <label htmlFor="mobileNumber">
-      MobileNumber:{this.props.details.mobileNumber} 
-    </label>
-    <label htmlFor="email">
-      Email: {this.props.details.email} 
-    </label>
-  </div>);
-
-
-  }
-  render() {
-    let render=this.getDetails();
+  renderEditable = () => {
+    const details = ['name', 'address', 'mobileNumber', 'email'];
     return (
-     render
+      <div className="input-display-details">
+        {details.map((detail) => {
+          return (
+            <label htmlFor={detail} key={uniqid()}>
+              {detail[0].toUpperCase() + detail.slice(1) + ' :'}
+              <input
+                type="text"
+                id={detail}
+                name={detail}
+                onChange={this.updateDetails}
+                value={this.props.details[detail]}
+              />
+            </label>
+          );
+        })}
+      </div>
+    );
+  };
+
+  renderDisplay = () => {
+    return (
+      <div className="display-fields-details">
+        <label htmlFor="name">Name: {this.props.details.name}</label>
+        <label htmlFor="address">Address: {this.props.details.address}</label>
+        <label htmlFor="mobileNumber">MobileNumber:{this.props.details.mobileNumber}</label>
+        <label htmlFor="email">Email: {this.props.details.email}</label>
+      </div>
+    );
+  };
+
+  renderDetails = () => {
+    if (this.props.editMode) return this.renderEditable();
+    return this.renderDisplay();
+  };
+
+  render() {
+    return (
+      <div className="Details">
+        <h2>Personal Details</h2>
+        {this.renderDetails()}
+      </div>
     );
   }
 }
