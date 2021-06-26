@@ -1,7 +1,7 @@
 import React from 'react';
-//import uniqid from 'uniqid';
 import Details from './components/Details.js';
 import Education from './components/Education.js';
+import WorkExperience from './components/WorkExperience.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,6 +24,12 @@ class App extends React.Component {
   setEducation=(arr)=>{
     this.setState({
       education:arr
+    })
+  }
+
+  setWorkExperience=(arr)=>{
+    this.setState({
+      workExperience:arr
     })
   }
 
@@ -52,6 +58,8 @@ class App extends React.Component {
           <h2 className="form-heading">Please Enter your Details Below</h2>
           <Details details={this.state.personalDetails} setDetails={this.setDetails} editMode={this.state.editMode} />
           <Education education={this.state.education} setEducation={this.setEducation} editMode={this.state.editMode}/>
+          <WorkExperience workExperience={this.state.workExperience} setWorkExperience={this.setWorkExperience} editMode={this.state.editMode}/>
+         
           {!this.state.editMode && (
             <button className="edit-button" onClick={this.edit}>
               Edit?
