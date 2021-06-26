@@ -45,7 +45,7 @@ class Details extends React.Component {
     </div>)
     }
     return (<div className="Details">
-    <h2>Personal Details</h2>
+    <h3>Personal Details</h3>
     <label htmlFor="name">
       Name: {this.props.details.name} 
     </label>
