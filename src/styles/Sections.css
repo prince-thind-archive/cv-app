@@ -38,6 +38,11 @@
   color: white;
 }
 
+.work-buttons{
+  padding-bottom: 2rem;
+  border-bottom: 2px solid gray;
+}
+
 :is(.add-section-button, .remove-section-button):hover {
   transform: scale(1.1);
 }

@@ -116,7 +116,7 @@ class Work extends React.Component {
         {this.renderWork()}
 
         {this.props.editMode && (
-          <div className="buttons">
+          <div className="buttons work-buttons">
             <button className="add-section-button" onClick={this.addSection}>
               Add
             </button>
