@@ -1,0 +1,43 @@
+.section {
+  padding: 1rem;
+  border-top: 3px solid rgb(78, 78, 78);
+}
+.section-heading {
+  text-align: left;
+  padding: 0.3rem;
+}
+
+.input-fields-section {
+  border: 1px solid white;
+  margin: 0.5rem 0;
+  padding: 0 0.5rem;
+}
+.display-fields-section {
+  border: 1px solid white;
+  margin: 0.5rem 0;
+  padding: 0 0.5rem;
+}
+
+.input-fields-section label {
+  display: flex;
+  margin: 1rem 1rem 1rem 3rem;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.display-fields-section label {
+  display: flex;
+  margin: 1rem 2rem;
+  gap: 1rem;
+}
+
+.add-section-button,
+.remove-section-button {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: rgb(35, 35, 61);
+  color: white;
+}
+
+:is(.add-section-button, .remove-section-button):hover {
+  transform: scale(1.1);
+}

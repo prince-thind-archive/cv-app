@@ -1,0 +1,37 @@
+.form-heading {
+  padding: 1rem;
+  background-color: rgba(0, 44, 0, 0.8);
+}
+.form-main {
+  border: 2px solid black;
+  width: fit-content;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+  background-color: hsla(240, 50%, 10%, 0.8);
+}
+.button {
+  font-size: 1.1rem;
+  color: white;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: 1px solid black;
+  background-color: rgb(35, 66, 15);
+}
+.button:hover {
+  transform: scale(1.1);
+}
+.footer {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+}
+
+/* to make footer stick to bottom*/
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.form {
+  flex: 1;
+}

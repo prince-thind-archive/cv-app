@@ -1,0 +1,28 @@
+.details {
+  padding: 1rem;
+}
+.details-heading {
+  text-align: left;
+  padding: 0.3rem;
+}
+.input-fields-details {
+  border: 1px solid white;
+  padding: 0.5rem;
+}
+.display-fields-details {
+  border: 1px solid white;
+  padding: 0.5rem;
+}
+
+.input-fields-details label {
+  display: flex;
+  margin: 1rem 1rem 1rem 3rem;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.display-fields-details label {
+  display: flex;
+  margin: 1rem 2rem;
+  gap: 1rem;
+}
