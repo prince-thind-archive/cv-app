@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/App.css';
 import Details from './components/Details.js';
 import Education from './components/Education.js';
 import Work from './components/Work.js';
@@ -55,22 +56,28 @@ class App extends React.Component {
     return (
       <div className="App">
         <form className="form">
-          <h2 className="form-heading">Please Enter your Details Below</h2>
-          <Details details={this.state.personalDetails} setDetails={this.setDetails} editMode={this.state.editMode} />
-          <Education education={this.state.education} setEducation={this.setEducation} editMode={this.state.editMode} />
-          <Work work={this.state.work} setWork={this.setWork} editMode={this.state.editMode} />
+          <h2 className="form-heading">CV Application</h2>
+          <div className="form-main">
+            <Details details={this.state.personalDetails} setDetails={this.setDetails} editMode={this.state.editMode} />
+            <Education
+              education={this.state.education}
+              setEducation={this.setEducation}
+              editMode={this.state.editMode}
+            />
+            <Work work={this.state.work} setWork={this.setWork} editMode={this.state.editMode} />
 
-          {!this.state.editMode && (
-            <button className="edit-button" onClick={this.edit}>
-              Edit?
+            {!this.state.editMode && (
+              <button className="edit-button button" onClick={this.edit}>
+                Edit
+              </button>
+            )}
+
+            <button type="submit" onClick={this.submitForm} className="submit-button-form button">
+              Submit
             </button>
-          )}
-
-          <button type="submit" onClick={this.submitForm}>
-            Submit
-          </button>
+          </div>
         </form>
-        <footer className="footer">CopyRight C PrinceThind</footer>
+        <footer className="footer">CopyRight © PrinceThind</footer>
       </div>
     );
   }

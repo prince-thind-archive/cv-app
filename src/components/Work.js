@@ -64,7 +64,7 @@ class Work extends React.Component {
   renderEditable = () => {
     return this.props.work.map((section) => {
       return (
-        <div key={section.id} data-key={section.id} className="input-field-work">
+        <div key={section.id} data-key={section.id} className="input-fields-section">
           <label htmlFor="companyName">
             Company Name:{' '}
             <input
@@ -93,9 +93,9 @@ class Work extends React.Component {
   renderDisplay = () => {
     return this.props.work.map((section) => {
       return (
-        <div key={section.id} data-key={section.id} className="display-field-work">
-          <label htmlFor="companyName">Institute Name:{this.getSectionValue(section.id, 'name')}</label>
-          <label htmlFor="jobTitle">Title Of Study:{this.getSectionValue(section.id, 'title')}</label>
+        <div key={section.id} data-key={section.id} className="display-fields-section">
+          <label htmlFor="companyName">Institute Name: {this.getSectionValue(section.id, 'name')}</label>
+          <label htmlFor="jobTitle">Title Of Study: {this.getSectionValue(section.id, 'title')}</label>
         </div>
       );
     });
@@ -111,15 +111,21 @@ class Work extends React.Component {
 
   render() {
     return (
-      <div className="Work">
-        <h3>Work Experience Details</h3>
+      <div className="section">
+        <h3 className="section-heading">Work Experience Details</h3>
         {this.renderWork()}
-        <button className="add-work" onClick={this.addSection}>
-          Add
-        </button>
-        <button className="remove-work" onClick={this.removeSection}>
-          Remove
-        </button>
+
+        {this.props.editMode && (
+          <div className="buttons">
+            <button className="add-section-button" onClick={this.addSection}>
+              Add
+            </button>
+            <button className="remove-section-button" onClick={this.removeSection}>
+              Remove
+            </button>
+          </div>
+        )}
+
       </div>
     );
   }

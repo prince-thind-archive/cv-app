@@ -1,5 +1,6 @@
 import React from 'react';
 import uniqid from 'uniqid';
+import '../styles/Details.css';
 
 class Details extends React.Component {
   updateDetails = (e) => {
@@ -27,7 +28,7 @@ class Details extends React.Component {
   renderEditable = () => {
     const details = ['name', 'address', 'mobileNumber', 'email'];
     return (
-      <div className="input-display-details">
+      <div className="input-fields-details">
         {details.map((detail) => {
           return (
             <label htmlFor={detail} key={uniqid()}>
@@ -51,7 +52,7 @@ class Details extends React.Component {
       <div className="display-fields-details">
         <label htmlFor="name">Name: {this.props.details.name}</label>
         <label htmlFor="address">Address: {this.props.details.address}</label>
-        <label htmlFor="mobileNumber">MobileNumber:{this.props.details.mobileNumber}</label>
+        <label htmlFor="mobileNumber">MobileNumber: {this.props.details.mobileNumber}</label>
         <label htmlFor="email">Email: {this.props.details.email}</label>
       </div>
     );
@@ -64,8 +65,8 @@ class Details extends React.Component {
 
   render() {
     return (
-      <div className="Details">
-        <h2>Personal Details</h2>
+      <div className="details">
+        <h2 className="details-heading"> Personal Details</h2>
         {this.renderDetails()}
       </div>
     );

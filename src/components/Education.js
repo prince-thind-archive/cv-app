@@ -1,5 +1,6 @@
 import React from 'react';
 import uniqid from 'uniqid';
+import '../styles/Sections.css';
 
 class Education extends React.Component {
   addSection = (event) => {
@@ -64,7 +65,7 @@ class Education extends React.Component {
   renderEditable = () => {
     return this.props.education.map((section) => {
       return (
-        <div key={section.id} data-key={section.id} className="input-field-education">
+        <div key={section.id} data-key={section.id} className="input-fields-section">
           <label htmlFor="instituteName">
             Institute Name:{' '}
             <input
@@ -93,9 +94,9 @@ class Education extends React.Component {
   renderDisplay = () => {
     return this.props.education.map((section) => {
       return (
-        <div key={section.id} data-key={section.id} className="display-field-education">
-          <label htmlFor="instituteName">Institute Name:{this.getSectionValue(section.id, 'name')}</label>
-          <label htmlFor="titleOfStudy">Title Of Study:{this.getSectionValue(section.id, 'title')}</label>
+        <div key={section.id} data-key={section.id} className="display-fields-section">
+          <label htmlFor="instituteName">Institute Name: {this.getSectionValue(section.id, 'name')}</label>
+          <label htmlFor="titleOfStudy">Title Of Study: {this.getSectionValue(section.id, 'title')}</label>
         </div>
       );
     });
@@ -111,15 +112,21 @@ class Education extends React.Component {
 
   render() {
     return (
-      <div className="Education">
-        <h3>Academic Details</h3>
+      <div className="section">
+        <h3 className="section-heading">Academic Details</h3>
         {this.renderEducation()}
-        <button className="add-education" onClick={this.addSection}>
-          Add
-        </button>
-        <button className="remove-education" onClick={this.removeSection}>
-          Remove
-        </button>
+
+        {this.props.editMode && (
+          <div className="buttons">
+            <button className="add-section-button " onClick={this.addSection}>
+              Add
+            </button>
+            <button className="remove-section-button " onClick={this.removeSection}>
+              Remove
+            </button>
+          </div>
+        )}
+        
       </div>
     );
   }
