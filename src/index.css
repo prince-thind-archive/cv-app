@@ -1,3 +1,21 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  text-align: center;
+  min-height: 100vh;
+  color: white;
+  background-image: url('./images/background.jpg');
+  background-color: hsl(170, 20%, 10%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: overlay;
+}
+
 .form-heading {
   padding: 1rem;
   background-color: rgba(0, 44, 0, 0.8);
@@ -34,4 +52,9 @@
 }
 .form {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.form-main{
+  flex:1;
 }
