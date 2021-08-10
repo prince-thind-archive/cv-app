@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles/App.css';
 import Details from './components/Details.js';
 import Education from './components/Education.js';
 import Work from './components/Work.js';
