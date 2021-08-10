@@ -1,5 +1,4 @@
 import React from 'react';
-import uniqid from 'uniqid';
 import '../styles/Details.css';
 
 class Details extends React.Component {
@@ -29,9 +28,9 @@ class Details extends React.Component {
     const details = ['name', 'address', 'mobileNumber', 'email'];
     return (
       <div className="input-fields-details">
-        {details.map((detail) => {
+        {details.map((detail,index) => {
           return (
-            <label htmlFor={detail} key={uniqid()}>
+            <label htmlFor={detail} key={index}>
               {detail[0].toUpperCase() + detail.slice(1) + ' :'}
               <input
                 type="text"
