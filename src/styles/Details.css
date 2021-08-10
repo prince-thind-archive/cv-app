@@ -26,3 +26,12 @@
   margin: 1rem 2rem;
   gap: 1rem;
 }
+@media only screen and (max-width: 760px) {
+  .input-fields-details label {
+    margin: 1rem 0;
+  }
+
+  .input-fields-details input {
+    width: 40vw;
+  }
+}

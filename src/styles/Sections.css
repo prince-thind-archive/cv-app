@@ -46,3 +46,14 @@
 :is(.add-section-button, .remove-section-button):hover {
   transform: scale(1.1);
 }
+
+
+@media only screen and (max-width: 760px) {
+  .input-fields-section label {
+    margin: 1rem 0;
+  }
+
+  .input-fields-section input {
+    width: 40vw;
+  }
+}
