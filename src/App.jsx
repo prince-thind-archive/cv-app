@@ -1,7 +1,7 @@
 import React from 'react';
-import Details from './components/Details.js';
-import Education from './components/Education.js';
-import Work from './components/Work.js';
+import Details from './components/Details';
+import Education from './components/Education';
+import Work from './components/Work';
 
 class App extends React.Component {
   constructor(props) {
